@@ -6,7 +6,7 @@ const authorization = require('../Middleware/authorization');
 router.get('/names', authorization, async (req, res) => {
     try {
         const trickNames = await pool.query(
-            'SELECT name, id from tricks'
+            'SELECT name, id from tricks ORDER BY ID'
         );
 
         return res.status(200).json(trickNames.rows);
