@@ -19,7 +19,7 @@ app.use(
 app.use('/auth', require('./Routes/Auth'));
 
 // Tricks Routes
-app.use('/tricks', require('./routes/Tricks'));
+app.use('/tricks', require('./Routes/Tricks'));
 
 app.listen(8000, () => {
     console.log(`Server is listening on port: ${process.env.PORT}`);
