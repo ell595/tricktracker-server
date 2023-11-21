@@ -58,9 +58,10 @@ router.post('/login', validInfo, async (req, res) => {
         );
         console.log(user);
 
+        const id = user.rows[0].id;
+
         if (user.rows.length === 0) {
             return res.status(401).json('Password or Email is incorrect');
-            
         }
 
         //Check if incoming password matches stored password
@@ -70,8 +71,8 @@ router.post('/login', validInfo, async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwtGenerator(user.rows[0].id);
-        return res.status(200).json({token});
+        const token = jwtGenerator(id);
+        return res.status(200).json({token, id});
 
     } catch (err) {
         console.error(err.message);
